@@ -1,0 +1,6 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+<h1>許願失敗...<a href="{% url 'story:wish' %}">再許一次？</a></h1>
+<p>或 <a href="{% url 'story:login' %}">回個人首頁</a></p>
+{% endblock %}

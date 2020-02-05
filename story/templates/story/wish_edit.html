@@ -1,0 +1,57 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+
+{% if message %}
+<div class="alert alert-secondary" role="alert">{{ message }}</div>
+{% endif %}
+
+<form action="{% url 'story:wish_editing' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="wish_id" value={{wish.id}}>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">我的故事：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value={{wish.content}} name="wish_content">
+       </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">報酬金額：</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" value={{wish.price}} name="wish_price">
+       </div>
+    </div>
+    <div class="form-group row">
+        <label for="wish_genres" class="col-sm-2 col-form-label">希望創作類型：</label>
+        <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="genres[]" value="fiction">
+              <label class="form-check-label">短篇小說</label>
+        </div>
+        <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="genres[]" value="poetry">
+              <label class="form-check-label">詩</label>
+        </div>
+        <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="genres[]" value="joke">
+              <label class="form-check-label">笑話</label>
+        </div>
+        <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="genres[]" value="illustration">
+              <label class="form-check-label">插畫</label>
+        </div>
+        <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="genres[]" value="rap">
+              <label class="form-check-label">饒舌</label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">許願時間：</label>
+        <div class="col-sm-10">
+            <input type="datetime" readonly class="form-control-plaintext" value={{wish.wish_time}} name="wish_time">
+            <h5><span class="badge badge-secondary">願望更改後許願時間也將更新</span></h5>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-secondary">更改願望</button>
+</form>
+{% endblock %}

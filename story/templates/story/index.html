@@ -1,0 +1,54 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+{% load static %}
+<div class="container">
+    <div class="row" style="margin-top:5%;">
+        <div class="col">
+            <img src="{% static "story/word_intro.jpg" %}" style="display: block; margin-left:auto; margin-right: auto; width: 50%;">
+        </div>
+    </div>
+    <div class="row justify-content-end" style="margin-top: 5%;">
+        <div class="col-2">
+            <a href="{% url 'story:wish' %}">
+                <img src="{% static "story/word_words.jpg" %}" style="width:60%;">
+
+            </a>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-2">
+            <a href="{% url 'story:wish' %}">
+                <img src="{% static "story/word_picture.jpg" %}" style="width:60%;">
+            </a>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-2">
+            <a href="{% url 'story:wish' %}">
+                <img src="{% static "story/word_music.jpg" %}" style="width:60%;">
+            </a>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <div class="row" style="margin-top: -20%;"> 
+        <div class="col-8 offset-2">
+            <img src="{% static "story/index_blue_new.jpg" %}" style="width:100%; height:auto; position: relative; z-index: -1;">
+        </div>
+    </div>
+
+</div>
+<!--
+    <div style="position:absoute; bottom:0;">
+<img src="{% static "story/index_genre.jpg" %}" style="width:70%; display:block; margin-left:auto; margin-right:auto; margin-top:-13%; z-index:10;"}
+</div>
+<div style="position:absoute; bottom:0;">
+<img src="{% static "story/index_blue_clear.jpg" %}" style="width:15%; margin-left:50%; margin-top: -5%; z-index:1;"}
+</div>
+-->
+{% endblock %}

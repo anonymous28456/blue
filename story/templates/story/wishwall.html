@@ -1,0 +1,19 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+{% if wishes %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">願望</div>
+            <div class="col-sm">許願時間</div>
+        </div>
+        {% for wish in wishes %}
+            <div class="row">
+                <div class="col-sm"><a href="{% url 'story:wish_detail' wish.id%}">{{wish.content}}</div>
+                <div class="col-sm">{{ wish.wish_time}}</div>
+            </div>
+        {% endfor %}
+{% else %}
+    <h3>願望牆上沒有願望</h3>
+{% endif %}
+{% endblock%}

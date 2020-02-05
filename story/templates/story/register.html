@@ -1,0 +1,87 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+{% load static %}
+
+<div class="container">
+    <div class="col-12 ">
+        {% if error %}
+            <img src="{% static "story/word_register_error.jpg" %}" style="display:block; margin-left:auto; margin-right:auto; width: 60%;">
+            </img>
+            <!-- TODO: present different error messages -->
+         {% endif %}
+    </div>
+    <div class="col-7 offset-3">
+
+        <img src="{% static "story/word_register_title.jpg" %}" style="display:block; margin-left: auto; margin-right: auto; width: 50%;">
+        </img>
+    </div>
+    {% if message %}
+    <div class="alert alert-secondary" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    <form class="form-horizontal" action="{% url 'story:registering' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group row" style="margin-top: 5%;">
+            <label class="control-label col-2 offset-3 " for="email">
+                <img src="{% static "story/word_email.jpg" %}" style="width: 100%;"></img>
+            </label>
+            <div class="col-4">
+                <input type="email" name="email" style="border: none transparent; outline: none; height: 100%; width: 100%; font-size: 200%;" autofocus />
+            </div>
+        </div>
+
+        <div class="form-group row align-items-center" style="padding-top:1%;">
+            <div class="col-2 offset-1">
+                <div class="row">
+                    <div class = "col">
+                        <img src="{% static "story/word_password_hint_length.jpg" %}" style="width: 100%;"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        <img src="{% static "story/word_password_hint_number.jpg" %}" style="width: 100%;"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        <img src="{% static "story/word_password_hint_common.jpg" %}" style="width: 100%;"/>
+                    </div>
+                </div>
+            </div>
+
+            <label class="control-label col-2" for="password1">
+                <img src="{% static "story/word_password.jpg" %}" style="width: 100%;"></img>
+            </label>
+            <div class="col-4">
+                <input type="password" name="password1" style="border:none transparent; outline: none; height: 100%; width: 100%; font-size:200%;" />
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label class="control-label col-3 offset-3" for="password2">
+                <img src="{% static "story/word_password_again.jpg" %}" style="width: 100%;"></img>
+            </label>
+            <div class="col-4">
+                <input type="password" name="password2" style="border:none transparent; outline: none; height: 100%; width: 100%; font-size:200%;" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-2 offset-3" for="username">
+                <img src="{% static "story/word_username.jpg" %}" style="width: 100%;"></img>
+            </label>
+            <div class="col-4">
+                <input type="text" name="username" style="border:none transparent; outline: none; height: 100%; width: 100%; font-size:200%;" />
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 3%;">
+            <div class="col-2 offset-8">
+                <input type="image" id="go" src="{% static "story/btn_login.jpg" %}" style="width:100%;"/>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

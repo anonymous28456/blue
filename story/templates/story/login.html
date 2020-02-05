@@ -1,0 +1,49 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+{% load static %}
+<div class="container">
+    <div class="col-4 offset-4">
+        <img src="{% static "story/word_login.jpg" %}" style="display:block; margin-left: auto; margin-right: auto; width: 50%;">
+        </img>
+    </div>
+
+    {% if message %}
+    <div>
+        {{ message}}
+    </div>
+    {% endif %}
+
+    <form class="form-horizontal" action="{% url 'story:logingin' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group row" style="margin-top: 5%;">
+            <label class="control-label col-2 offset-3" for="username">
+                <img src="{% static "story/word_username.jpg" %}" style="width:100%;"></img>
+            </label>
+            <div class="col-4">
+                <input name="username" style="border:none transparent; outline: none; height: 100%; width: 100%; font-size:200%;" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-2 offset-3" for="password">
+                <img src="{% static "story/word_password.jpg" %}" style="width: 100%;"></img>
+            </label>
+            <div class="col-4">
+                <input type="password" name="password" style="border: none transparent; outline: none; height: 100%; width: 100%; font-size: 200%;" autofocus />
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 3%;">
+            <div class="col-2 offset-5">
+                <input type="image" id="go" src="{% static "story/btn_login.jpg" %}" style="width:100%;"/>
+            </div>
+
+            <div class="col-2 offset-9">
+                <a href="{% url 'story:register' %}">
+                    <img src="{% static "story/word_register.jpg" %}" style="width: 100%;">
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "story/base.html" %}
+
+{% block body %}
+
+<ul class="list-group">
+    <li class="list-group-item">願望內容：{{wish.content}}</li>
+    <li class="list-group-item">報酬金額：：{{wish.price}}</li>
+    <li class="list-group-item">希望創作類型：
+        {% for genre in wish.genre.all %}
+            {{ genre.get_title_display }}。 
+        {% endfor %}
+        </li>
+    <li class="list-group-item">許願時間：{{wish.wish_time}}</li>
+    <li class="list-group-item">接案藝術家：{{wish.granter}}</li>
+    <li class="list-group-item">藝術家接案時間：{{wish.heard_time}}</li>
+    <li class="list-group-item">藝術家完成時間：{{wish.finished_time}}</li>
+    <li class="list-group-item">寄出時間：{{wish.sent_time}}</li>
+    <li class="list-group-item">給錢沒：{{wish.money_received}}</li>
+</ul>
+<form action="{% url 'story:wish_edit' wish.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-secondary" value="修改願望"/>
+</form>
+
+{% if message %}
+    <span class="badge badge-secondary">{{ message }}</span>
+{% endif %}
+
+{% endblock %}
